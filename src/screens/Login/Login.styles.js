@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   areaPortrait: {
@@ -34,12 +34,14 @@ const styles = StyleSheet.create({
   },
   text: {
     alignSelf: 'flex-end',
-    marginTop: 5,
+    marginTop: Platform.OS === 'android' ? 5 : 0,
+    color: '#0f0f0f',
     fontSize: 12,
   },
   input: {
     borderBottomWidth: 1,
-    marginBottom: 5,
+    marginBottom: Platform.OS === 'android' ? 5 : 20,
+    padding: 10,
     borderBottomColor: '#000',
   },
   buttonView: {

@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   label: {
+    overflow: 'hidden',
     marginTop: 5,
     marginRight: 5,
     borderRadius: 5,
@@ -76,18 +77,18 @@ const styles = StyleSheet.create({
   },
 });
 
-const createLabelWithBackbround = color =>
+const createLabelWithBackground = color =>
   StyleSheet.flatten([styles.label, {backgroundColor: color}]);
 
 export const styledLabels = {
-  aliveLabel: createLabelWithBackbround('#41cc00'),
-  deadLabel: createLabelWithBackbround('#cc0000'),
+  aliveLabel: createLabelWithBackground('#41cc00'),
+  deadLabel: createLabelWithBackground('#cc0000'),
 
-  humanLabel: createLabelWithBackbround('#00ccbb'),
-  alienLabel: createLabelWithBackbround('#a000cc'),
+  humanLabel: createLabelWithBackground('#00ccbb'),
+  alienLabel: createLabelWithBackground('#a000cc'),
 
-  maleLabel: createLabelWithBackbround('#0055cc'),
-  femaleLabel: createLabelWithBackbround('#cc008f'),
+  maleLabel: createLabelWithBackground('#0055cc'),
+  femaleLabel: createLabelWithBackground('#cc008f'),
 };
 
 export default styles;
