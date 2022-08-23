@@ -2,7 +2,7 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 
-import StackContainer from './Stack';
+import StackContainer from './navigation/Stack';
 
 import {persistor, store} from './redux/store';
 

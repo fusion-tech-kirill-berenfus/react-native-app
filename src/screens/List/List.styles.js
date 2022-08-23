@@ -64,13 +64,6 @@ const styles = StyleSheet.create({
   comments: {
     fontSize: 12,
   },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: '#dbdbdb',
-  },
   icon: {
     width: 24,
     height: 24,

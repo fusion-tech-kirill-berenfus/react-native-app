@@ -35,13 +35,6 @@ const List = ({navigation}) => {
         renderItem={({item}) => <Item navigation={navigation} data={item} />}
         keyExtractor={item => item.id}
       />
-      <View style={styles.footer}>
-        <Text>icon</Text>
-        <Text>icon</Text>
-        <Text>icon</Text>
-        <Text>icon</Text>
-        <Text onPress={() => navigation.navigate('Camera')}>Cam</Text>
-      </View>
     </SafeAreaView>
   );
 };
