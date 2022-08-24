@@ -7,10 +7,13 @@ import StackContainer from './navigation/Stack';
 
 import {persistor, store} from './redux/store';
 
+import {notificationListener, requestUserPermission} from './utils/pushHandler';
+
 const App = () => {
   useEffect(() => {
     const init = async () => {
-      // …do multiple sync or async tasks
+      await requestUserPermission();
+      notificationListener();
     };
 
     init().finally(async () => {
