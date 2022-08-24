@@ -1,5 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
+import {Notifier} from 'react-native-notifier';
+
 import {getListItemById} from '../redux/store';
 
 export async function requestUserPermission() {
@@ -44,18 +46,35 @@ export function notificationListener(navigation) {
   messaging()
     .getInitialNotification()
     .then(remoteMessage => {
-      const id = +remoteMessage.data.id;
+      if (remoteMessage) {
+        const id = +remoteMessage.data.id;
 
-      const {name, image, origin} = getListItemById(id);
+        const {name, image, origin} = getListItemById(id);
 
-      navigation.navigate('Article', {
-        name,
-        origin,
-        image,
-      });
+        navigation.navigate('Article', {
+          name,
+          origin,
+          image,
+        });
+      }
     });
 
   messaging().onMessage(async remoteMessage => {
-    console.log(remoteMessage);
+    const {notification, data} = remoteMessage;
+
+    if (data) {
+      const {name, image, origin} = getListItemById(+data.id);
+
+      Notifier.showNotification({
+        title: notification.title,
+        description: notification.body,
+        onPress: () =>
+          navigation.navigate('Article', {
+            name,
+            origin,
+            image,
+          }),
+      });
+    }
   });
 }
