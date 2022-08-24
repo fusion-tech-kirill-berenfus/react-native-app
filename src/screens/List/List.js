@@ -8,10 +8,17 @@ import {
   FlatList,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
+import RNBootSplash from 'react-native-bootsplash';
+
 import {fetchCharacters} from '../../redux/listSlice';
 import {logOut} from '../../redux/userSlice';
 
 import styles, {styledLabels} from './List.styles';
+
+import {
+  notificationListener,
+  requestUserPermission,
+} from '../../utils/pushHandler';
 
 const List = ({navigation}) => {
   const {list} = useSelector(state => state.listReducer);
@@ -20,7 +27,17 @@ const List = ({navigation}) => {
 
   useEffect(() => {
     dispatch(fetchCharacters());
-  }, []);
+
+    const init = async () => {
+      await requestUserPermission();
+
+      notificationListener(navigation);
+
+      await RNBootSplash.hide({fade: true});
+    };
+
+    init();
+  }, [dispatch, navigation]);
 
   return (
     <SafeAreaView style={styles.view}>

@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
+import {getListItemById} from '../redux/store';
 
 export async function requestUserPermission() {
   const authStatus = await messaging().requestPermission();
@@ -27,23 +28,31 @@ async function getFCMToken() {
   }
 }
 
-export function notificationListener() {
+export function notificationListener(navigation) {
   messaging().onNotificationOpenedApp(remoteMessage => {
-    console.log(
-      'Notification caused app to open from background state:',
-      remoteMessage.notification,
-    );
+    const id = +remoteMessage.data.id;
+
+    const {name, image, origin} = getListItemById(id);
+
+    navigation.navigate('Article', {
+      name,
+      origin,
+      image,
+    });
   });
 
   messaging()
     .getInitialNotification()
     .then(remoteMessage => {
-      if (remoteMessage) {
-        console.log(
-          'Notification caused app to open from quit state:',
-          remoteMessage.notification,
-        );
-      }
+      const id = +remoteMessage.data.id;
+
+      const {name, image, origin} = getListItemById(id);
+
+      navigation.navigate('Article', {
+        name,
+        origin,
+        image,
+      });
     });
 
   messaging().onMessage(async remoteMessage => {

@@ -31,4 +31,7 @@ export const store = configureStore({
   }),
 });
 
+export const getListItemById = targetId =>
+  store.getState().listReducer.list.find(({id}) => id === targetId);
+
 export const persistor = persistStore(store);
