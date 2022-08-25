@@ -23,12 +23,15 @@ const initialState = {
   isError: false,
 };
 
-export const listSlice = createSlice({
+const listSlice = createSlice({
   name: 'list',
   initialState,
   reducers: {
     setList: (state, action) => {
       state.list = action.payload;
+    },
+    deleteItem: (state, action) => {
+      state.list = state.list.filter(item => item.id !== action.payload);
     },
   },
   extraReducers: builder => {
@@ -46,3 +49,7 @@ export const listSlice = createSlice({
     });
   },
 });
+
+export const {deleteItem} = listSlice.actions;
+
+export default listSlice.reducer;

@@ -31,7 +31,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginLeft: 20,
   },
+  titleLabel: {
+    flexDirection: 'row',
+    marginRight: 12,
+  },
   title: {
+    marginRight: 8,
     fontWeight: '700',
     fontSize: 16,
   },

@@ -8,11 +8,25 @@ import {
   Pressable,
 } from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
+import {useDispatch} from 'react-redux';
+
+import {deleteItem} from '../../redux/listSlice';
+
+import {useGlobalModalContext} from '../../components/GlobalModalContext';
 
 import styles from './Article.styles';
 
-const Article = ({route}) => {
-  const {name, origin, image} = route.params;
+const Article = ({route, navigation}) => {
+  const {name, origin, image, id} = route.params;
+
+  const dispatch = useDispatch();
+
+  const {showModal} = useGlobalModalContext();
+
+  const handleConfirm = () => {
+    dispatch(deleteItem(id));
+    navigation.navigate('Home');
+  };
 
   return (
     <SafeAreaView style={styles.screen}>
@@ -32,8 +46,17 @@ const Article = ({route}) => {
         <Text style={styles.title}>{name}</Text>
         <Text style={styles.author}>{origin}</Text>
         <View style={styles.buttonsView}>
-          <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Like</Text>
+          <Pressable
+            onPress={() => {
+              showModal({
+                type: 'error',
+                title: `Delete ${name}`,
+                description: 'Are you shure you want to delete this character?',
+                onConfirm: handleConfirm,
+              });
+            }}
+            style={styles.button}>
+            <Text style={styles.buttonText}>Delete</Text>
           </Pressable>
           <Pressable style={styles.button}>
             <Text style={styles.buttonText}>Comment</Text>

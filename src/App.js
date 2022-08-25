@@ -7,12 +7,16 @@ import StackContainer from './navigation/Stack';
 
 import {persistor, store} from './redux/store';
 
+import GlobalModal from './components/GlobalModalContext';
+
 const App = () => {
   return (
     <NotifierWrapper>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <StackContainer />
+          <GlobalModal>
+            <StackContainer />
+          </GlobalModal>
         </PersistGate>
       </Provider>
     </NotifierWrapper>

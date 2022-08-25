@@ -11,8 +11,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import {listSlice} from './listSlice';
-import {userSlice} from './userSlice';
+import listReducer from './listSlice';
+import userReducer from './userSlice';
 
 const persistConfig = {
   key: 'root',
@@ -21,8 +21,8 @@ const persistConfig = {
 
 export const store = configureStore({
   reducer: {
-    listReducer: listSlice.reducer,
-    userReducer: persistReducer(persistConfig, userSlice.reducer),
+    listReducer,
+    userReducer: persistReducer(persistConfig, userReducer),
   },
   middleware: getDefaultMiddleware({
     serializableCheck: {

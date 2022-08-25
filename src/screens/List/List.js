@@ -6,11 +6,13 @@ import {
   Text,
   Image,
   FlatList,
+  Pressable,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import RNBootSplash from 'react-native-bootsplash';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {fetchCharacters} from '../../redux/listSlice';
+import {fetchCharacters, deleteItem} from '../../redux/listSlice';
 import {logOut} from '../../redux/userSlice';
 
 import styles, {styledLabels} from './List.styles';
@@ -19,6 +21,7 @@ import {
   notificationListener,
   requestUserPermission,
 } from '../../utils/pushHandler';
+import {useGlobalModalContext} from '../../components/GlobalModalContext';
 
 const List = ({navigation}) => {
   const {list} = useSelector(state => state.listReducer);
@@ -49,15 +52,19 @@ const List = ({navigation}) => {
       </View>
       <FlatList
         data={list}
-        renderItem={({item}) => <Item navigation={navigation} data={item} />}
+        renderItem={({item}) => (
+          <Item navigation={navigation} data={item} dispatch={dispatch} />
+        )}
         keyExtractor={item => item.id}
       />
     </SafeAreaView>
   );
 };
 
-const Item = ({navigation, data}) => {
-  const {name, origin, gender, status, species, image} = data;
+const Item = ({navigation, data, dispatch}) => {
+  const {id, name, origin, gender, status, species, image} = data;
+
+  const {showModal} = useGlobalModalContext();
 
   const getLabelStyle = param => {
     switch (param) {
@@ -88,6 +95,7 @@ const Item = ({navigation, data}) => {
           name,
           origin,
           image,
+          id,
         })
       }
       style={styles.itemView}>
@@ -95,7 +103,25 @@ const Item = ({navigation, data}) => {
 
       <View style={styles.itemContent}>
         <View>
-          <Text style={styles.title}>{name}</Text>
+          <View style={styles.titleLabel}>
+            <Text style={styles.title}>{name}</Text>
+            <Pressable
+              onPress={() =>
+                showModal({
+                  type: 'error',
+                  title: `Delete ${name}`,
+                  description:
+                    'Are you shure you want to delete this character?',
+                  onConfirm: () => dispatch(deleteItem(id)),
+                })
+              }>
+              <MaterialCommunityIcons
+                name="delete-circle"
+                color="#9e0600"
+                size={24}
+              />
+            </Pressable>
+          </View>
           <Text style={styles.author}>{origin}</Text>
         </View>
         <View style={styles.labelView}>
