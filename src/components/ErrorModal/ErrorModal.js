@@ -3,7 +3,7 @@ import {Modal, Pressable, View, Text} from 'react-native';
 
 import {useGlobalModalContext} from '../GlobalModalContext';
 
-import styles from './styles';
+import styles from './ErrorModal.styles';
 
 const ErrorModal = ({title, description, onConfirm}) => {
   const {hideModal} = useGlobalModalContext();

@@ -13,7 +13,7 @@ import {useGlobalModalContext} from '../../components/GlobalModalContext';
 
 import {useCharacter} from '../../hooks/useCharacter';
 
-import styles from './Article.styles';
+import styles from './Character.styles';
 
 const Article = ({route, navigation}) => {
   const {showModal} = useGlobalModalContext();

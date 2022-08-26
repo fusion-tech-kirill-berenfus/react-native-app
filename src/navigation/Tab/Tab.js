@@ -4,10 +4,10 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Camera from '../../screens/Camera/Camera';
-import List from '../../screens/List/List';
-import Profile from '../../screens/Profile';
+import CharactersList from '../../screens/CharactersList/CharactersList';
+import Profile from '../../screens/Profile/Profile';
 
-import styles from './styles';
+import styles from './Tab.styles';
 
 function MyTabBar({state, descriptors, navigation}) {
   return (
@@ -92,7 +92,7 @@ const TabsContainer = () => {
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
         }}
-        component={List}
+        component={CharactersList}
       />
       <Tab.Screen
         name="Camera"

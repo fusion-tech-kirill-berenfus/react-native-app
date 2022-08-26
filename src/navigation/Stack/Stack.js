@@ -4,8 +4,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import TabsNavigation from '../Tab';
 
-import Login from '../../screens/Login/Login';
-import Article from '../../screens/Article/Article';
+import Login from '../../screens/Login';
+import Character from '../../screens/Character';
 
 import {useCurrentUser} from '../../hooks/useCurrentUser';
 
@@ -25,7 +25,7 @@ const StackContainer = () => {
         ) : (
           <>
             <Stack.Screen name="Root" component={TabsNavigation} />
-            <Stack.Screen name="Article" component={Article} />
+            <Stack.Screen name="Character" component={Character} />
           </>
         )}
       </Stack.Navigator>

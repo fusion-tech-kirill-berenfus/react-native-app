@@ -15,7 +15,7 @@ import {useCharacters} from '../../hooks/useCharacters';
 import {useCharacter} from '../../hooks/useCharacter';
 import {useCurrentUser} from '../../hooks/useCurrentUser';
 
-import styles, {styledLabels} from './List.styles';
+import styles, {styledLabels} from './CharactersList.styles';
 
 import {
   notificationListener,
@@ -23,7 +23,7 @@ import {
 } from '../../utils/pushHandler';
 import {useGlobalModalContext} from '../../components/GlobalModalContext';
 
-const List = ({navigation}) => {
+const CharactersList = ({navigation}) => {
   const {characters} = useCharacters();
   const {username, logOutUser} = useCurrentUser();
 
@@ -136,4 +136,4 @@ const Item = ({navigation, data}) => {
   );
 };
 
-export default List;
+export default CharactersList;
