@@ -12,10 +12,10 @@ const charactersSlice = createSlice({
   name: 'characters',
   initialState,
   reducers: {
-    setcharacters: (state, action) => {
+    setCharactersList: (state, action) => {
       state.characters = action.payload;
     },
-    deleteItem: (state, action) => {
+    deleteCharacter: (state, action) => {
       state.characters = state.characters.filter(
         item => item.id !== action.payload,
       );
@@ -37,6 +37,6 @@ const charactersSlice = createSlice({
   },
 });
 
-export const {deleteItem} = charactersSlice.actions;
+export const {deleteCharacter, setCharactersList} = charactersSlice.actions;
 
 export default charactersSlice.reducer;

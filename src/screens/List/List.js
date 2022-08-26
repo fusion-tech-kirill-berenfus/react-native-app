@@ -8,12 +8,12 @@ import {
   FlatList,
   Pressable,
 } from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
 import RNBootSplash from 'react-native-bootsplash';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {fetchCharacters, deleteItem} from '../../redux/listSlice';
-import {logOut} from '../../redux/userSlice';
+import {useCharacters} from '../../hooks/useCharacters';
+import {useCharacter} from '../../hooks/useCharacter';
+import {useCurrentUser} from '../../hooks/useCurrentUser';
 
 import styles, {styledLabels} from './List.styles';
 
@@ -24,12 +24,11 @@ import {
 import {useGlobalModalContext} from '../../components/GlobalModalContext';
 
 const List = ({navigation}) => {
-  const {characters} = useSelector(state => state.charactersReducer);
-  const {username} = useSelector(state => state.userReducer);
-  const dispatch = useDispatch();
+  const {characters} = useCharacters();
+  const {username, logOutUser} = useCurrentUser();
 
   useEffect(() => {
-    dispatch(fetchCharacters());
+    // setCharacters();
 
     const init = async () => {
       await requestUserPermission();
@@ -40,31 +39,31 @@ const List = ({navigation}) => {
     };
 
     init();
-  }, [dispatch, navigation]);
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.view}>
       <View style={styles.header}>
         <Text>{username}</Text>
-        <Text onPress={() => dispatch(logOut())} style={styles.sideItem}>
+        <Text onPress={logOutUser} style={styles.sideItem}>
           Log Out
         </Text>
       </View>
       <FlatList
         data={characters}
-        renderItem={({item}) => (
-          <Item navigation={navigation} data={item} dispatch={dispatch} />
-        )}
+        renderItem={({item}) => <Item navigation={navigation} data={item} />}
         keyExtractor={item => item.id}
       />
     </SafeAreaView>
   );
 };
 
-const Item = ({navigation, data, dispatch}) => {
+const Item = ({navigation, data}) => {
   const {id, name, origin, gender, status, species, image} = data;
 
   const {showModal} = useGlobalModalContext();
+
+  const {deleteCharacterById} = useCharacter(id);
 
   const getLabelStyle = param => {
     switch (param) {
@@ -112,7 +111,7 @@ const Item = ({navigation, data, dispatch}) => {
                   title: `Delete ${name}`,
                   description:
                     'Are you shure you want to delete this character?',
-                  onConfirm: () => dispatch(deleteItem(id)),
+                  onConfirm: deleteCharacterById,
                 })
               }>
               <MaterialCommunityIcons

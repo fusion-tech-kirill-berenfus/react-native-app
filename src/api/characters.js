@@ -1,3 +1,3 @@
 import axios from './axios';
 
-export const getCharacters = () => axios('/character/?page=1');
+export const getCharactersApi = () => axios('/character/?page=1');

@@ -8,23 +8,23 @@ import {
   Pressable,
 } from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
-import {useDispatch} from 'react-redux';
-
-import {deleteItem} from '../../redux/listSlice';
 
 import {useGlobalModalContext} from '../../components/GlobalModalContext';
+
+import {useCharacter} from '../../hooks/useCharacter';
 
 import styles from './Article.styles';
 
 const Article = ({route, navigation}) => {
-  const {name, origin, image, id} = route.params;
-
-  const dispatch = useDispatch();
-
   const {showModal} = useGlobalModalContext();
 
+  const {id} = route.params;
+
+  const {character, deleteCharacterById} = useCharacter(id);
+  const {name, origin, image} = character;
+
   const handleConfirm = () => {
-    dispatch(deleteItem(id));
+    deleteCharacterById(id);
     navigation.navigate('Home');
   };
 

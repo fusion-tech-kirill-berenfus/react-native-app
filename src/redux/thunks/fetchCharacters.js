@@ -1,10 +1,10 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {getCharacters} from '../../api/characters';
+import {getCharactersApi} from '../../api/characters';
 
 export const fetchCharacters = createAsyncThunk(
   'characters/fetchCharacters',
   async () => {
-    const {data} = await getCharacters();
+    const {data} = await getCharactersApi();
 
     const result = data.results.map(item => ({
       id: item.id,

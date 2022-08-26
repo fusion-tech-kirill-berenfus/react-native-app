@@ -1,17 +1,18 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import TabsNavigation from '../Tab';
 
 import Login from '../../screens/Login/Login';
 import Article from '../../screens/Article/Article';
 
-import TabsNavigation from '../Tab';
+import {useCurrentUser} from '../../hooks/useCurrentUser';
 
 const Stack = createNativeStackNavigator();
 
 const StackContainer = () => {
-  const {username} = useSelector(state => state.userReducer);
+  const {username} = useCurrentUser();
 
   return (
     <NavigationContainer>
