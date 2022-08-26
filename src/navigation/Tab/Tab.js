@@ -1,5 +1,4 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -7,63 +6,7 @@ import Camera from '../../screens/Camera';
 import CharactersList from '../../screens/CharactersList';
 import Profile from '../../screens/Profile';
 
-import styles, {getTextColor} from './Tab.styles';
-
-function MyTabBar({state, descriptors, navigation}) {
-  return (
-    <View style={styles.container}>
-      {state.routes.map((route, index) => {
-        const {options} = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
-
-        const Icon = options.tabBarIcon;
-
-        const isFocused = state.index === index;
-
-        const itemColor = getTextColor(isFocused);
-
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          });
-
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate({name: route.name, merge: true});
-          }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
-
-        return (
-          <TouchableOpacity
-            accessibilityRole="button"
-            accessibilityState={isFocused ? {selected: true} : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
-            key={index}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={styles.item}>
-            <Icon color={itemColor.color} size={24} />
-            <Text style={[styles.text, itemColor]}>{label}</Text>
-          </TouchableOpacity>
-        );
-      })}
-    </View>
-  );
-}
+import AppTabBar from '../../components/AppTabBar';
 
 const Tab = createBottomTabNavigator();
 
@@ -72,7 +15,7 @@ const TabsContainer = () => {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{headerShown: false}}
-      tabBar={props => <MyTabBar {...props} />}>
+      tabBar={props => <AppTabBar {...props} />}>
       <Tab.Screen
         name="Profile"
         options={{

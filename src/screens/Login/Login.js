@@ -18,7 +18,7 @@ import styles from './Login.styles';
 
 import cat from '../../assets/cat.jpeg';
 
-const Login = ({navigation}) => {
+const Login = () => {
   const [usernameFiled, setUsernameField] = useState('');
   const [isPortraint, setPortraint] = useState(getPortraint());
 

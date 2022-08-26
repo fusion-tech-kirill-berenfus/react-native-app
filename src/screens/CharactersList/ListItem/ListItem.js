@@ -1,5 +1,6 @@
 import React from 'react';
 import {Image, Pressable, Text, TouchableOpacity, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {useCharacter} from '../../../hooks/useCharacter';
@@ -9,12 +10,14 @@ import Tag from '../../../components/Tag';
 
 import styles, {tagColors} from './ListItem.styles';
 
-const ListItem = ({navigation, data}) => {
+const ListItem = ({data}) => {
   const {id, name, origin, gender, status, species, image} = data;
 
   const {showModal} = useGlobalModalContext();
 
   const {deleteCharacterById} = useCharacter(id);
+
+  const navigation = useNavigation();
 
   return (
     <TouchableOpacity

@@ -1,3 +1,4 @@
+import {useNavigation, useRoute} from '@react-navigation/native';
 import React from 'react';
 import {
   SafeAreaView,
@@ -15,8 +16,11 @@ import {useCharacter} from '../../hooks/useCharacter';
 
 import styles from './Character.styles';
 
-const Article = ({route, navigation}) => {
+const Article = () => {
   const {showModal} = useGlobalModalContext();
+
+  const route = useRoute();
+  const navigation = useNavigation();
 
   const {id} = route.params;
 
@@ -35,7 +39,7 @@ const Article = ({route, navigation}) => {
           showPagination
           paginationDefaultColor="#bdbdbd"
           paginationActiveColor="#4f4f4f"
-          paginationStyleItem={{width: 8, height: 8}}
+          paginationStyleItem={styles.dotItem}
           index={0}>
           <View style={styles.child}>
             <Image style={styles.image} source={{uri: image}} />

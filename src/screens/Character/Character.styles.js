@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   image: {width, height: '90%'},
+  dotItem: {width: 8, height: 8},
   title: {
     fontSize: 20,
     fontWeight: '700',

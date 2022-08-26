@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView, View, Text, FlatList} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import RNBootSplash from 'react-native-bootsplash';
 
 import {useCharacters} from '../../hooks/useCharacters';
@@ -14,9 +15,12 @@ import {
   requestUserPermission,
 } from '../../utils/pushHandler';
 
-const CharactersList = ({navigation}) => {
+const CharactersList = () => {
   const {characters} = useCharacters();
   const {username, logOutUser} = useCurrentUser();
+
+  const navigation = useNavigation();
+
   useEffect(() => {
     // setCharacters();
 
