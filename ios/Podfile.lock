@@ -489,6 +489,8 @@ PODS:
     - FirebaseCoreExtension (= 9.4.0)
     - React-Core
     - RNFBApp
+  - RNGestureHandler (2.5.0):
+    - React-Core
   - RNScreens (3.16.0):
     - React-Core
     - React-RCTImage
@@ -564,6 +566,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -674,6 +677,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBMessaging:
     :path: "../node_modules/@react-native-firebase/messaging"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNVectorIcons:
@@ -719,7 +724,7 @@ SPEC CHECKSUMS:
   React: 482cd1ba23c471be1aed3800180be2427418d7be
   React-bridging: c2ea4fed6fe4ed27c12fd71e88b5d5d3da107fde
   React-callinvoker: d4d1f98163fb5e35545e910415ef6c04796bb188
-  React-Codegen: 9cb8451d5b81b95b961e7ba7188efa09c3fbfc83
+  React-Codegen: ff35fb9c7f6ec2ed34fb6de2e1099d88dfb25f2f
   React-Core: 4d3443a45b67c71d74d7243ddde9569d1e4f4fad
   React-CoreModules: 70be25399366b5632ab18ecf6fe444a8165a7bea
   React-cxxreact: 822d3794fc0bf206f4691592f90e086dd4f92228
@@ -743,14 +748,15 @@ SPEC CHECKSUMS:
   ReactCommon: 8f67bd7e0a6afade0f20718f859dc8c2275f2e83
   RNBootSplash: 5f346163977573d6b2aeba1b25df9d2245c0d73c
   RNCAsyncStorage: b2489b49e38c85e10ed45a888d13a2a4c7b32ea1
-  RNFBApp: 39904cebc3958e2d377dccf870b5c5d76cb089a9
-  RNFBMessaging: 7decac9e31a7eb9f53d9c34ebacea795687f433b
+  RNFBApp: 0db41be0ca09ec0828164f16cd36732c0df8dabb
+  RNFBMessaging: b75bbb60959cd67302b78e198b92b34a331843fb
+  RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
   RNScreens: ee31ecdf23fe81e93c74feaa086cf173d758ab58
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: ff994563b2fd98c982ca58e8cd9db2cdaf4dda74
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 6350d394f2a49141d534636f47eb2d7be43658b9
+PODFILE CHECKSUM: 40c9e9040fe4f767125707a9268a127e57b63c87
 
 COCOAPODS: 1.11.3

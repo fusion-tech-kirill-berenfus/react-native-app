@@ -24,7 +24,7 @@ import {
 import {useGlobalModalContext} from '../../components/GlobalModalContext';
 
 const List = ({navigation}) => {
-  const {list} = useSelector(state => state.listReducer);
+  const {characters} = useSelector(state => state.charactersReducer);
   const {username} = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
 
@@ -51,7 +51,7 @@ const List = ({navigation}) => {
         </Text>
       </View>
       <FlatList
-        data={list}
+        data={characters}
         renderItem={({item}) => (
           <Item navigation={navigation} data={item} dispatch={dispatch} />
         )}

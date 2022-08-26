@@ -4,6 +4,8 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '12.4'
 install! 'cocoapods', :deterministic_uuids => false
 
+$RNFirebaseAsStaticFramework = true
+
 pod 'Firebase', :modular_headers => true
 pod 'FirebaseCoreInternal', :modular_headers => true
 pod 'GoogleUtilities', :modular_headers => true
@@ -15,7 +17,9 @@ target 'myproject' do
   
   # Flags change depending on the env values.
   flags = get_default_flags()
-
+  
+  use_frameworks! :linkage => :static
+  
   use_react_native!(
     :path => config[:reactNativePath],
     # to enable hermes on iOS, change `false` to `true` and then install pods

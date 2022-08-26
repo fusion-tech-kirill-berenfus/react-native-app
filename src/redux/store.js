@@ -11,7 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import listReducer from './listSlice';
+import charactersReducer from './charactersSlice';
 import userReducer from './userSlice';
 
 const persistConfig = {
@@ -21,7 +21,7 @@ const persistConfig = {
 
 export const store = configureStore({
   reducer: {
-    listReducer,
+    charactersReducer,
     userReducer: persistReducer(persistConfig, userReducer),
   },
   middleware: getDefaultMiddleware({
