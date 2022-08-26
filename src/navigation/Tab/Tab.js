@@ -3,11 +3,11 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Camera from '../../screens/Camera/Camera';
-import CharactersList from '../../screens/CharactersList/CharactersList';
-import Profile from '../../screens/Profile/Profile';
+import Camera from '../../screens/Camera';
+import CharactersList from '../../screens/CharactersList';
+import Profile from '../../screens/Profile';
 
-import styles from './Tab.styles';
+import styles, {getTextColor} from './Tab.styles';
 
 function MyTabBar({state, descriptors, navigation}) {
   return (
@@ -24,6 +24,8 @@ function MyTabBar({state, descriptors, navigation}) {
         const Icon = options.tabBarIcon;
 
         const isFocused = state.index === index;
+
+        const itemColor = getTextColor(isFocused);
 
         const onPress = () => {
           const event = navigation.emit({
@@ -54,11 +56,8 @@ function MyTabBar({state, descriptors, navigation}) {
             onPress={onPress}
             onLongPress={onLongPress}
             style={styles.item}>
-            <Icon
-              color={isFocused ? styles.focusColor : styles.inactiveColor}
-              size={24}
-            />
-            <Text style={styles.getTextColor(isFocused)}>{label}</Text>
+            <Icon color={itemColor.color} size={24} />
+            <Text style={[styles.text, itemColor]}>{label}</Text>
           </TouchableOpacity>
         );
       })}

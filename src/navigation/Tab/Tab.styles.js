@@ -12,14 +12,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#5955DE',
   },
   item: {flex: 1, alignItems: 'center'},
-  focusColor: '#FFF',
-  inactiveColor: '#9C97F3',
-  getTextColor: function (isActive) {
-    return {
-      color: isActive ? this.focusColor : this.inactiveColor,
-      fontSize: 12,
-    };
-  },
+  text: {fontSize: 12},
 });
+
+export const getTextColor = isActive =>
+  StyleSheet.create({
+    color: isActive ? '#FFF' : '#9C97F3',
+  });
 
 export default styles;
