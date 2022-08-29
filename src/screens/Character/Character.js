@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
 
-import {useGlobalModalContext} from '../../components/GlobalModalContext';
+import {useGlobalModalContext} from '../../hooks/useGlobalModalContext';
 
 import {useCharacter} from '../../hooks/useCharacter';
 

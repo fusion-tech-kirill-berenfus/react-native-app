@@ -3,7 +3,7 @@ import {Image, Pressable, Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {useCharacter} from '../../../hooks/useCharacter';
-import {useGlobalModalContext} from '../../../components/GlobalModalContext/GlobalModalContext';
+import {useGlobalModalContext} from '../../../hooks/useGlobalModalContext';
 
 import Tag from '../../../components/Tag';
 

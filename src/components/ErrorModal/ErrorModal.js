@@ -1,7 +1,7 @@
 import React from 'react';
 import {Modal, Pressable, View, Text} from 'react-native';
 
-import {useGlobalModalContext} from '../GlobalModalContext';
+import {useGlobalModalContext} from '../../hooks/useGlobalModalContext';
 
 import styles from './ErrorModal.styles';
 

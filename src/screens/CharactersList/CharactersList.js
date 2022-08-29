@@ -10,10 +10,10 @@ import ListItem from './ListItem/ListItem';
 
 import styles from './CharactersList.styles';
 
-import {
+/* import {
   notificationListener,
   requestUserPermission,
-} from '../../utils/pushHandler';
+} from '../../utils/pushHandler'; */
 
 const CharactersList = () => {
   const {characters} = useCharacters();
@@ -25,9 +25,9 @@ const CharactersList = () => {
     // setCharacters();
 
     const init = async () => {
-      await requestUserPermission();
+      // await requestUserPermission();
 
-      notificationListener(navigation);
+      // notificationListener(navigation);
 
       await RNBootSplash.hide({fade: true});
     };

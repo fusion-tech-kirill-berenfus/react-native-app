@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, {createContext, useState} from 'react';
 
 import ErrorModal from '../ErrorModal';
 
@@ -11,8 +11,7 @@ const initialState = {
   hideModal: () => {},
 };
 
-const GlobalModalContext = createContext(initialState);
-export const useGlobalModalContext = () => useContext(GlobalModalContext);
+export const GlobalModalContext = createContext(initialState);
 
 const GlobalModal = ({children}) => {
   const [store, setStore] = useState(null);

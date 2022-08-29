@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+/* import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
 import {Notifier} from 'react-native-notifier';
 
@@ -78,3 +78,4 @@ export function notificationListener(navigation) {
     }
   });
 }
+ */
