@@ -1,12 +1,15 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Camera from '../../screens/Camera';
 import CharactersList from '../../screens/CharactersList';
 import Profile from '../../screens/Profile';
 
 import AppTabBar from '../../components/AppTabBar';
+
+import UserIcon from '../../assets/user.svg';
+import HomeIcon from '../../assets/home.svg';
+import CameraIcon from '../../assets/camera.svg';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +24,7 @@ const TabsContainer = () => {
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+            <UserIcon width={24} height={24} fill={color} />
           ),
         }}
         component={Profile}
@@ -31,7 +34,7 @@ const TabsContainer = () => {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
+            <HomeIcon width={24} height={24} fill={color} />
           ),
         }}
         component={CharactersList}
@@ -41,7 +44,7 @@ const TabsContainer = () => {
         options={{
           tabBarLabel: 'Camera',
           tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="camera" color={color} size={size} />
+            <CameraIcon width={24} height={24} fill={color} />
           ),
         }}
         component={Camera}

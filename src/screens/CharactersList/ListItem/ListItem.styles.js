@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   },
   titleLabel: {
     flexDirection: 'row',
+    alignItems: 'center',
     marginRight: 12,
   },
   title: {

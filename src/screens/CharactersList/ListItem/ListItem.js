@@ -1,12 +1,13 @@
 import React from 'react';
 import {Image, Pressable, Text, TouchableOpacity, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {useCharacter} from '../../../hooks/useCharacter';
 import {useGlobalModalContext} from '../../../components/GlobalModalContext/GlobalModalContext';
 
 import Tag from '../../../components/Tag';
+
+import Delete from '../../../assets/delete.svg';
 
 import styles, {tagColors} from './ListItem.styles';
 
@@ -46,11 +47,7 @@ const ListItem = ({data}) => {
                   onConfirm: deleteCharacterById,
                 })
               }>
-              <MaterialCommunityIcons
-                name="delete-circle"
-                color="#9e0600"
-                size={24}
-              />
+              <Delete width={15} height={15} fill={'#9e0600'} />
             </Pressable>
           </View>
           <Text style={styles.author}>{origin}</Text>
